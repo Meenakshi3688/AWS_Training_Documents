@@ -115,3 +115,73 @@ Next :::
 		
 		- EC2 Service :::
 	
+
+######################
+Day 3 - 10th Aug. 2026
+######################
+
+		- IAM Policies	# Administration Access 
+		
+				pldevops-service-role - 
+		
+		- IAM Roles
+		
+		- pldevops-service-role-EC2
+		
+		- Create IAM Role --> Defined with required policy 
+		
+		- Attach that IAM Role to the AWS Resource
+
+
+
+		- Virtual Machines -> EC2 instance 
+		
+		
+	{
+	  "Version": "2012-10-17",
+	  "Statement": [
+		{
+		  "Sid": "Statement1",
+		  "Effect": "Allow",
+		  "Principal": "*",
+		  "Action": [
+			"s3:GetObject"
+		  ],
+		  "Resource": "arn:aws:s3:::loksai-eta-2025-s3-bucket1/*"
+		}
+	  ]
+	}
+	
+
+
+{
+    "Version": "2012-10-17",
+    "Statement": [{
+        "Principal":{
+            "AWS":[
+                 "arn:aws:iam::111122223333:user/JohnDoe,
+				 arn:aws:iam::1111222244444:user/Peter"
+         ]
+        },
+        "Effect": "Allow",
+        "Action": [
+            "s3:PutObject"
+        ],
+        "Resource": [
+            "arn:aws:s3:::amzn-s3-demo-bucket/*"
+        ],
+        "Condition": {
+            "StringEquals": {
+                "s3:RequestObjectTag/Department": "Finance"
+            }
+        }
+    }]
+}		
+		
+		
+
+	https://awspolicygen.s3.amazonaws.com/policygen.html
+	
+	
+	https://docs.aws.amazon.com/AmazonS3/latest/userguide/example-bucket-policies.html?icmpid=docs_amazons3_console
+	
